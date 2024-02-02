@@ -1,0 +1,33 @@
+{
+  "name": "golang-book-tracking",
+  "module": "index.ts",
+  "type": "module",
+  "scripts": {
+    "dev": "air",
+    "swag": "swag init --parseDependency --parseInternal",
+    "js:lint": "biome check .",
+    "js:lint:apply": "biome check --apply .",
+    "js:format": "biome format .",
+    "js:format:fix": "biome format --write .",
+    "prepare": "husky",
+    "pre-commit": "bunx lint-staged"
+  },
+  "dependencies": {
+    "typescript": "^5.0.0"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^1.5.3",
+    "@types/bun": "latest",
+    "husky": "^9.0.10",
+    "lint-staged": "^15.2.1"
+  },
+  "lint-staged": {
+    "**/*.{js,ts,jsx,tsx,json}": [
+      "biome check --apply .",
+      "biome format --write ."
+    ],
+    "**/*.go": [
+      "gofmt -w"
+    ]
+  }
+}

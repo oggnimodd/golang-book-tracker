@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Auth</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style type="text/css">
+    iframe {
+      width: 100%;
+      min-height: 100vh;
+      height: auto;
+    }
+
+    body {
+      overflow: hidden;
+    }
+  </style>
+</head>
+
+<body>
+  <iframe src="http://localhost:8080/swagger/index.html" frameborder="0"></iframe>
+  <script>
+    const iframe = document.querySelector('iframe');
+
+
+    iframe.onload = () => {
+      const doc = iframe.contentDocument || iframe.contentWindow.document;
+
+      // Create new script element
+      const script = doc.createElement("script");
+
+      script.src = "/docs/clerk.js"
+
+      // Set the script type
+      script.type = "text/javascript";
+      // Append the script to the body of the iframe
+      doc.body.appendChild(script);
+    }
+  </script>
+</body>
+
+</html>
